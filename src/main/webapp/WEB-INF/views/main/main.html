@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+        .button-signin {
+            background-color: #007bff;
+        }
+        .button-signup {
+            background-color: #28a745;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Java 16 Car Store</h1>
+
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="https://w0.peakpx.com/wallpaper/298/736/HD-wallpaper-tesla-model-s-ii-electric-cars.jpg" alt="Slide 1"></div>
+            <div class="slide"><img src="https://www.major-auto.ru/images/models/lexus/lx-600/29877/29877_medium.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="https://s0.rbk.ru/v6_top_pics/media/img/9/53/754788765937539.jpeg" alt="Slide 3"></div>
+
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="/sign-in" class="button button-signin">Sign In</a>
+        <a href="/auth/register" class="button button-signup">Sign Up</a>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.children.length;
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000);
+</script>
+
+</body>
+</html>
+
+
+

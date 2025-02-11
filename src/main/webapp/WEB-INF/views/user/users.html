@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        table {
+            width: 90%;
+            max-width: 1200px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f4f4f4;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        caption {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .action-links {
+            display: flex;
+            gap: 10px;
+        }
+        .action-links a {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .action-links a.update {
+            background-color: #007bff;
+        }
+        .action-links a.update:hover {
+            background-color: #0056b3;
+        }
+        .action-links a.delete {
+            background-color: #dc3545;
+        }
+        .action-links a.delete:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <caption>Admin User Management</caption>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Role</th>
+        <th>Register Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phoneNumber}"></td>
+        <td th:text="${user.role}"></td>
+        <td th:text="${user.registrationDate}"></td>
+        <td>
+            <div class="action-links">
+                <a th:href="'users/update-form/'+ ${user.id}" class="update">Update</a>
+                <a th:href="'users/delete/'+ ${user.id}" class="delete">Delete</a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
